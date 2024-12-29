@@ -4,10 +4,12 @@ const cors = require("cors")
 const app = express()
 const port = 3000
 const dbConnection = require("./configDB/configDB")
+const route = require("./routes")
 
 // middleWare
 app.use(cors())
 app.use(express.json())
+app.use(route)
 
 // db connection
 dbConnection()
