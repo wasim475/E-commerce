@@ -1,7 +1,10 @@
 const express = require("express")
 const _ = express.Router()
-const api = process.env.BASE_URL
-const apiRoutes = require("../routes/api")
+const apiversion = process.env.BASE_URL
+const apiRoute = require("./api")
 
-_.use(api,apiRoutes)
-module.exports = _
+_.use(apiversion,apiRoute)
+
+_.use(apiversion, (req,res)=> res.json("No api found in this route"))
+
+module.exports = _;

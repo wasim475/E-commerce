@@ -1,5 +1,7 @@
 const express = require("express")
 const _ = express.Router()
-const authRoute = require("./authRoutes")
-_.use("/auth", authRoute)
-module.exports = _
+const authroute = require("./authroute")
+
+_.use("/auth",authroute)
+
+module.exports = _;
