@@ -1,5 +1,6 @@
 const {emailValidation, passwordValidation} = require("../helper/validation")
 const user = require("../model/userSchema")
+const bcrypt = require('bcrypt');
 
 const registrationController = async (req,res)=>{
     const {name, email, password}= req.body
@@ -15,6 +16,7 @@ const registrationController = async (req,res)=>{
     }else if(!password){
         res.send("Password is required")
     }else{
+        
         if(email){
            if(!emailValidation(email)){
             res.send("Enter a valid Email.")
@@ -26,12 +28,16 @@ const registrationController = async (req,res)=>{
                 res.send("Invalid password")
             }
         }
-        const User = new user({
-            name, email, password
-        })
-
-        User.save()
-        res.send(User)
+       
+            bcrypt.hash(password, 10, function(err, hash) {
+                const User = new user({
+                    name, email, password: hash
+                })
+        
+                User.save()
+                res.send(User)
+            });
+       
     }
 }
 
