@@ -19,10 +19,10 @@ const usersSchema = new Schema({
     emailVerify: {
         type: Boolean,
         default: false
-    },
+    },  
     role: {
         type: String,
-        enum: ["admin", "marchant", "user"]
+        enum: ["admin", "marchant", "user"],
         default: "user"
     }
 })
