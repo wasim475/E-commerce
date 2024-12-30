@@ -3,7 +3,7 @@ const User = require("../model/userSchema")
 const otpController = async (req,res)=>{
     const {email, otp} = req.body
     const data = await User.find({email})
-    const requireOtp = data[0].otp
+    const requireOtp = data[0]?.otp 
     if(requireOtp === otp) {
         if(data[0].emailVerify){
             return res.send("You already verify your email.")
