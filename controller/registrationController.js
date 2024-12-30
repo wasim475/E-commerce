@@ -53,7 +53,7 @@ const registrationController = async (req, res) => {
         });
  
         const info = await transporter.sendMail({
-            from: ' "E-commerce" loginassistant005@gmail.com', // sender address
+            from: `"E-commerce" ${process.env.BASE_EMAIL}`, // sender address
             to: "wasim.hossain003@gmail.com", // list of receivers
             subject: "Verify Your Email", // Subject line
             // text: "Hello world?", // plain text body 
