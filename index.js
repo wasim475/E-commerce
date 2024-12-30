@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.json())
 app.use(route)
 
-// db connection
+// db connection 
 dbConnection()
 
 app.get('/', (req, res) => {
